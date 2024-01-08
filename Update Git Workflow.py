@@ -1,4 +1,13 @@
 # Databricks notebook source
+# MAGIC %md
+# MAGIC
+# MAGIC In this notebook we use the databricks-sdk but can also import requests and call the REST API directly
+# MAGIC
+# MAGIC [Databricks-SDK](https://databricks-sdk-py.readthedocs.io/en/latest/index.html)
+# MAGIC
+
+# COMMAND ----------
+
 # MAGIC %pip install --upgrade databricks-sdk
 
 # COMMAND ----------
@@ -11,17 +20,3 @@ from databricks.sdk import WorkspaceClient
 w = WorkspaceClient()
 
 w.repos.update(1502861152868509, branch="main")
-
-# COMMAND ----------
-
-import os
-
-path = '/Workspace/Users/craig.kovar@databricks.com'
-dir = 'dir1'
-
-full_path = os.path.join(path,dir)
-    
-with open(f'{full_path}/new_file.txt', "r") as f:
-    name_string = f.readline()
-
-print(f"Hello {name_string}, this is initial message!")
